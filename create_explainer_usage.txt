@@ -1,0 +1,25 @@
+Usage Instructions for create_explainer.R
+
+This script generates a text file named 'explainer.txt' in the same folder as your output file. The file includes metadata about the R session and the script that created the output, such as:
+
+- R version
+- Date the script was run
+- Script name and file path
+- A list of loaded packages with their versions
+
+It must be called *after* plot_path has been defined. plot_path should contain the full file path of the output file (e.g., a saved plot or data file).
+
+💡 Usage
+
+If plot_path is defined inside a loop or function:
+You need to make plot_path accessible to the global environment before calling the script:
+
+assign("plot_path", plot_path, envir = .GlobalEnv)
+source("C:/github/create_explainer/create_explainer.R")
+
+If plot_path is already defined in the global environment:
+You can just call:
+
+source("C:/github/create_explainer/create_explainer.R")
+
+The explainer.txt file will be created in the same directory as the file referenced in plot_path.
